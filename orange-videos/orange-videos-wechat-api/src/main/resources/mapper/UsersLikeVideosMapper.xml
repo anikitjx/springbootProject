@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orange.mapper.UsersLikeVideosMapper" >
+  <resultMap id="BaseResultMap" type="com.orange.pojo.UsersLikeVideos" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="video_id" property="videoId" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="saveUserLikeVideo" parameterType="com.orange.pojo.UsersLikeVideos">
+    INSERT INTO users_like_videos (id,user_id,video_id) VALUES(#{id},#{userId},#{videoId})
+  </insert>
+  <delete id="deleteUserLikeVideo" parameterType="com.orange.pojo.UsersLikeVideos">
+    DELETE FROM users_like_videos WHERE user_id = #{userId} and video_id = #{videoId}
+  </delete>
+  <select id="findUserLikeVideo" resultMap="BaseResultMap" parameterType="com.orange.pojo.UsersLikeVideos">
+    SELECT * FROM users_like_videos WHERE user_id = #{userId} and video_id = #{videoId}
+  </select>
+</mapper>
